@@ -23,7 +23,15 @@
 
 		<div class="main">
 			<h1>Counter</h1>
-			<p>{{ session['count'] }}</p>
+			<p>
+				{{ session['count'] }}
+				
+			</p>
+			<form action='/ninja' method='post'>
+				<p><button type='submit' name='action' value='ninja'>Ninja +2</button></p>
+				<p><button type='submit' name ='action' value='reset'>Reset</p>
+			</form>
+			
 		</div>
 
 
