@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dojo Survey</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+	<div class="container">
+		
+		<div class="header">		
+			<h4>Counter</h4>
+			<ul>
+				<li>&#x21e6;</li>
+				<li>&#x21e8;</li>
+				<li>&#x2716;</li>
+				<li><img src="{{ url_for('static',filename='images/home.png') }}" alt="home icon"></li>
+			</ul>
+			<input type="text" id="nav" value="http://localhost:5000/">
+			<input type="text" id="search">
+		</div>
+
+
+		<div class="main">
+			<h1>Counter</h1>
+			<p>{{ session['count'] }}</p>
+		</div>
+
+
+		<div class="footer"></div>
+	</div>
+</body>
+</html>
