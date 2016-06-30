@@ -6,7 +6,7 @@ app.secret_key="Br@1nCl0ud"								#set secret key to encrypt the session
 @app.route('/',)
 def game():
  	if 'number' not in session:							#check if session already exists
-  		session['number']=random.randrange(0, 10)		#set session to random number; try to guess this
+  		session['number']=random.randrange(0, 100)		#set session to random number; try to guess this
   	
 	return render_template("index.html")
 
