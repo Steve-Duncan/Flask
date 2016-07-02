@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ninja Gold</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+	<div class="container">
+		
+		<div class="header">		
+			<h4>Ninja Money</h4>
+			<ul>
+				<li>&#x21e6;</li>
+				<li>&#x21e8;</li>
+				<li>&#x2716;</li>
+				<li><img src="{{ url_for('static',filename='images/home.png') }}" alt="home icon"></li>
+			</ul>
+			<input type="text" id="nav" value="http://localhost:5000/">
+			<input type="text" id="search">
+		</div>
+
+		<div class='main'>
+			<p class=gold>Your Gold: <input name='amt' value='{{ amt }}'></p>
+
+			<form action='/process_money' method='post'>
+				<input type="hidden" name='location', value='farm'>
+				<h3>Farm</h3>
+				<h5>(earns 10 - 20 golds)</h5>		
+				<input type='submit' value='Find Gold!'></input>
+			</form>
+			
+			<form action='/process_money' method='post'>
+				<input type="hidden" name='location', value='cave'>
+				<h3>Cave</h3>
+				<h5>(earns 5 - 10 golds)</h5>
+				<input type='submit' value='Find Gold!'></input>
+			</form>
+
+			<form action='/process_money' method='post'>
+				<input type="hidden" name='location', value='house'>
+				<h3>House</h3>
+				<h5>(earns 2 - 5 golds)</h5>			
+				<input type='submit' value='Find Gold!'></input>
+			</form>
+			<form action='/process_money' method='post'>
+				<input type="hidden" name='location', value='casino'>
+				<h3>Casino</h3>
+				<h5>(earns/takes 0 - 50 golds)</h5>
+				<input type='submit' value='Find Gold!'></input>
+			</form>
+			<p>Activities:</p>
+			<div class='activities'>
+				<!-- paragraphs will be dynamically rendered here for the activity output area -->
+			</div>
+
+		</div>
+
+		<div class='footer'></div>
+	</div>
+</body>
+</html>
