@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dojo Survey</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+	<div class="container">
+		
+		<div class="header">		
+			<h4>Dojo Survey Index</h4>
+			<ul>
+				<li>&#x21e6;</li>
+				<li>&#x21e8;</li>
+				<li>&#x2716;</li>
+				<li><img src="{{ url_for('static',filename='images/home.png') }}" alt="home icon"></li>
+			</ul>
+			<input type="text" id="nav" value="http://localhost/">
+			<input type="text" id="search">
+		</div>
+
+
+		<div class="main">
+
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					{% for message in messages %}
+						<p>{{ message }}</p>
+					{% endfor %}
+				{% endif %}
+			{% endwith %}
+
+			<form class="left" action='/process' method='post'>
+				<label for="name">Your name:</label>
+				<input type="text" name="name">
+				<label for="location">Dojo Location:</label>
+				<select name="location">
+					<option value="" style="display:none;"></option>
+					<option value="Portland">Portland</option>
+					<option value="Seattle">Seattle</option>
+					<option value="Timbuktu">Timbktu</option>
+				</select>
+				<label for="language">Favorite Language:</label>
+				<select name="language" value=''>
+					<option value="" style="display:none;"></option>
+					<option value="Python">Python</option>
+					<option value="Javascript">Javacript</option>
+					<option value="PigLatin">Pig Latin</option>
+				</select>
+				<p>Comment (optional):</p>
+				<textarea name="comment" id="comment"></textarea>
+				<p><button type="submit" id="survey">Submit</button></p>
+			</form>
+		</div>
+		<div class="footer"></div>
+	</div>
+</body>
+</html>
