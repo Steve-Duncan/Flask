@@ -3,6 +3,8 @@ import re
 
 #regex for valid email format
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9\.\+_-]+@[a-zA-Z0-9\._-]+\.[a-zA-Z]*$')
+#regex for valid password
+PW_REGEX = re.compile(r'\d.*[A-Z]|[A-Z].*\d')
 
 app = Flask(__name__)
 app.secret_key = 'N0w!sTh3T1m3'
@@ -32,6 +34,11 @@ def submit():
 		return redirect('/')
 	if request.form['confirm_password']!=request.form['password']:
 		flash('Passwords do not match.')
+		return redirect('/')
+
+	#validate password contains at least 1 uppercase letter and 1 number
+	if not PW_REGEX.match(request.form['password']):
+		flash('Password must contain at least 1 uppercase letter and 1 number.')
 		return redirect('/')
 
 	flash('Thanks for submitting your information.')
