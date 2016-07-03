@@ -1,0 +1,11 @@
+/*CSS reset settings */
+*{
+	margin: 0;
+	padding: 0;
+	font-family: Tahoma, sans-serif;
+}
+
+img{
+	display: block;
+	margin: auto;
+}
