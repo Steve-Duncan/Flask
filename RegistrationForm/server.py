@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request, redirect, session, flash
-import re
+import re, datetime
 
 #regex for valid email format
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9\.\+_-]+@[a-zA-Z0-9\._-]+\.[a-zA-Z]*$')
 #regex for valid password
 PW_REGEX = re.compile(r'\d.*[A-Z]|[A-Z].*\d')
+#regex for birthdate
+BD_REGEX = re.compile(r'[0-9]{2}/[0-9]{2}/[0-9]{4}')
 
 app = Flask(__name__)
 app.secret_key = 'N0w!sTh3T1m3'
@@ -34,6 +36,16 @@ def submit():
 		return redirect('/')
 	if request.form['confirm_password']!=request.form['password']:
 		flash('Passwords do not match.')
+		return redirect('/')
+
+	#validate date format for birtday
+	if not BD_REGEX.match(request.form['birthdate']):
+		flash('Birthday is not in correct format. It should be in the form mm/dd/yyyy')
+
+	#validate date is in the past
+	now=datetime.datetime.now().strftime('%m/%d/%Y')
+	if now < request.form['birthdate']:
+		flash('Not a valid birthdate.')
 		return redirect('/')
 
 	#validate password contains at least 1 uppercase letter and 1 number
