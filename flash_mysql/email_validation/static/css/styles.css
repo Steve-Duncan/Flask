@@ -110,9 +110,17 @@ form h3{
 	height: 100px;
 	overflow: auto;
 }
+span{
+	display: inline-block;
+}
 .address{
+	width: 250px;
 	text-align: left;
 	margin: 5px 0 0 100px;
+}
+.date{
+	width: 150px;
+	margin-left: 150px;
 }
 
 /*footer section*/

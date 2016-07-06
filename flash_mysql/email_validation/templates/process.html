@@ -21,13 +21,13 @@
 		</div>
 
 		<div class="main">
-			<h3 class='success'>The email address you entered ({{ msg }}) is a VALID email address! Thank you!</h3>
+			<h3 class='success'>The email address you entered ({{ email }}) is a VALID email address! Thank you!</h3>
 			<form action="/process" method='post'>
 				
 				<h3>Email Addresses Entered:</h3>
 				<div class='email_list'>
-					{% for address in addresses %}
-						<p class='address'>Email: {{address['email']}}</p>
+					{% for address in email_list %}
+						<span class='address'>{{address['email']}} </span><span class='date'>{{address['date']}}</span>
 					{% endfor %}
 				</div>
 			</form>
