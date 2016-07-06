@@ -1,0 +1,130 @@
+/*CSS reset settings */
+*{
+	margin: 0;
+	padding: 0;
+	font-family: Tahoma, sans-serif;
+}
+.container{
+	width: 750px;
+	margin: 0 auto;
+	border: 1px solid black;
+}
+
+/*header section*/
+.header{
+	border-bottom: 1px solid black;
+	padding: 0 0 10px 10px;
+	background-color: silver;
+}
+h4{
+	text-align: center;
+}
+.header input{
+	border: 1px solid black;
+	font-size: 14px;	
+}
+ul, input{
+	display: inline;
+	vertical-align: center;
+}
+ul li{
+	display: inline-block;
+	vertical-align: bottom;
+	font-size: 50px;
+}
+ul, input{
+	display: inline;
+	vertical-align: center;
+}
+ul li{
+	display: inline-block;
+	vertical-align: bottom;
+	font-size: 50px;
+}
+#nav{
+	width: 350px;
+	margin: 0 0 25px 25px;
+}
+#home{
+	margin-top: 10px;
+}
+#search{
+	width: 100px;
+	margin-left: 40px;
+	background-image:url("http://i47.tinypic.com/r02vbq.png");
+	background-repeat: no-repeat;
+    background-position: left;
+}
+#searchIcon{
+	margin-left: 50px;
+}
+
+/*main section*/
+.main{
+	height: 300px;
+}
+p{
+	text-align: center;
+}
+.valid{
+	visibility: hidden;
+}
+.notvalid{
+	display: block;
+	visibility: visible;
+	margin: auto;
+	margin-top: 35px;
+	padding: 10px;
+	text-align: center;
+	width: 400px;
+	border: 1px solid black;
+	background-color: red;
+	color: white;
+
+}
+.email{
+	width: 350px;
+	margin: 35px 0 25px 20px;
+}
+
+form input{
+	margin-left: 375px;
+}
+.success{
+	display: block;
+	margin: auto;
+	margin-top: 35px;
+	padding: 10px;
+	text-align: center;
+	width: 400px;
+	border: 1px solid black;
+	background-color: green;
+	color: black;
+}
+form h3{
+	text-align: left;
+	margin: 25px 0 0 50px;
+	text-decoration: underline;
+}
+.email_list{
+	height: 100px;
+	overflow: auto;
+}
+.address{
+	text-align: left;
+	margin: 5px 0 0 100px;
+}
+
+/*footer section*/
+.footer{
+	height: 25px;
+	background-color: silver;
+	border-top: 1px solid black;
+}
+
+
+
+
+
+
+

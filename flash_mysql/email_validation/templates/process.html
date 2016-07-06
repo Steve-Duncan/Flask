@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Email Validation</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+	<div class="container">
+		
+		<div class="header">		
+			<h4>Email Validation</h4>
+			<ul>
+				<li>&#x21e6;</li>
+				<li>&#x21e8;</li>
+				<li>&#x2716;</li>
+				<li><img src="{{ url_for('static',filename='images/home.png') }}" alt="home icon"></li>
+			</ul>
+			<input type="text" id="nav" value="http://localhost/">
+			<input type="text" id="search">
+		</div>
+
+		<div class="main">
+			<h3 class='success'>The email address you entered ({{ msg }}) is a VALID email address! Thank you!</h3>
+			<form action="/process" method='post'>
+				
+				<h3>Email Addresses Entered:</h3>
+				<div class='email_list'>
+					{% for address in addresses %}
+						<p class='address'>Email: {{address['email']}}</p>
+					{% endfor %}
+				</div>
+			</form>
+		</div>
+
+		<div class="footer"></div>
+	</div>
+</body>
+</html>
