@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect , session, url_for
+from flask import Flask, render_template, request, redirect , session
 from mysqlconnection import MySQLConnector
 import re, datetime
 
@@ -9,7 +9,7 @@ app=Flask(__name__)
 app.secret_key="Br@1nCl0ud"
 mysql = MySQLConnector(app,'email')
 
-@app.route('/',methods=['GET'])
+@app.route('/')
 def index():
 	return render_template('index.html')
 
