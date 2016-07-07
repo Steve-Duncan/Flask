@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect , flash
+from flask import Flask, render_template, request, redirect , session, url_for
 from mysqlconnection import MySQLConnector
 import re, datetime
 
@@ -6,9 +6,10 @@ import re, datetime
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9\.\+_-]+@[a-zA-Z0-9\._-]+\.[a-zA-Z]*$')
 
 app=Flask(__name__)
+app.secret_key="Br@1nCl0ud"
 mysql = MySQLConnector(app,'email')
 
-@app.route('/')
+@app.route('/',methods=['GET'])
 def index():
 	return render_template('index.html')
 
@@ -16,12 +17,13 @@ def index():
 @app.route('/process',methods=['POST'])
 def submit():
 	#set initial value of condition to valid
-	isvalid = 'valid'	
-	#get the value entered from the form
+	isvalid = 'valid'
+	
 	email=request.form['email']
 	#validate no blank fields
 	if len(email)<1:
-		return redirect('/')		
+		return redirect('/')
+
 	#validate email address
 	if not EMAIL_REGEX.match(email):
 		#set condition to not valid
@@ -39,23 +41,28 @@ def submit():
 		# Run query, with dictionary values injected into the query.
 		mysql.query_db(query, data)
 		#SQL query to return all addresses
-		#query = "SELECT email, DATE_FORMAT(create_time,'%m %d %Y %p') FROM email_addresses"
-		query = "SELECT email,DATE_FORMAT(create_time,'%m/%d/%Y %l:%m%p') AS 'date' FROM email_addresses;"
+		query = "SELECT id,email,DATE_FORMAT(create_time,'%m/%d/%Y %l:%m%p') AS 'date' FROM email_addresses;"
+		data = {'email': email}
 		#put all email addresses in variable
 		addresses=mysql.query_db(query, data)
 
-
-		# email_list=''
-		# for address in addresses:
-		# 	when = address['create_time'].strftime('%m/%d/%Y %H:%M %p')
-		# 	#print when
-		# 	email_list=email_list + (address['email']) + '\t' + when + '\n'
-		# 	print email_list
 		return render_template('process.html',email=email,email_list=addresses)
-		#return render_template('process.html',email=email,wtf='fuck you')
-		#return render_template('process.html',msg=email,addresses=addresses)
-		# return render_template('index.html',isvalid=isvalid)
-
 	return redirect('/')
+
+
+@app.route('/delete/<email_id>',methods=['POST'])
+def delete(email_id):
+	#SQL query to delete an address
+	query = "DELETE FROM email_addresses WHERE id = :id"
+	data = {'id': email_id}
+	#run the query
+	mysql.query_db(query, data)
+
+	#query to return addresses
+	query = "SELECT id,email,DATE_FORMAT(create_time,'%m/%d/%Y %l:%m%p') AS 'date' FROM email_addresses;"
+	addresses=mysql.query_db(query)
+	#render the process page again, make success messabe invisible, and list remaining addresses
+	return render_template('process.html',email='',visible='hide',email_list=addresses)
+
 
 app.run(debug=True)
