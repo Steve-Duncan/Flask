@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Full Friends</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+	{% if friends: %}
+		{% for friend in friends: %}
+			<p>	
+				<form action="/friends/{{ friend['id'] }}" method='post' class='form_edit'>
+					<input type="hidden" value='{{ friend['id'] }}'>
+					<span>First Name:</span><input type="text" name='first_name' value="{{ friend['first_name'] }}">
+					<span>Last Name:</span><input type="text" name='last_name' value="{{ friend['last_name'] }}">
+					<span>Email:</span><input type="text" name='email' value="{{ friend['email'] }}">
+					<input type="submit" class='submit_edit' name='submit' value='update'>
+				</form>
+			</p>
+		{% endfor %}
+	{% else: %}
+		<p>
+			<form action="/friends" method='post' class='form_edit'>				
+				<span>First Name:</span><input type="text" name='first_name'>
+				<span>Last Name:</span><input type="text" name='last_name'>
+				<span>Email:</span><input type="text" name='email'>
+				<input type="submit" class='submit_edit' name='submit' value='add'>	
+			</form>
+		</p>
+	{% endif %}
+		<hr>
+
+</body>
+</html>
+
+
