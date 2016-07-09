@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login and Registration</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+	<div class='container'>
+		<h1 class='{{ login }}'>Login page</h1>
+		<h2 class='{{ register }}'>Email not found - please register.</h2>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					<p>{{ message }}</p>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+		<form action="/login" method='post' class='{{ login }}'>
+			<label for='email'>Email:</label><input type="text" name='email'> 
+			<label for='password'>Password:</label><input type="text" name = 'password'>
+			<input type="submit" class='submit' value='Log in'>
+		</form>
+
+		<form action="/register" method='post' class='{{ register }}'>
+			<label for='first_name'>First name:</label><input type="text" name='first_name'>
+			<label for='last_name'>Last name:</label><input type="text" name='last_name'>
+			<label for='email'>Email:</label><input type="text" name='email'> 
+			<label for='password'>Password:</label><input type="text" name = 'password'>
+			<label for='confirm_password'>Confirm password:</label><input type="text" name = 'confirm_password'>
+			<input type="submit" class='submit' value='Register'>
+		</form>
+	</div>
+</body>
+</html>
+
