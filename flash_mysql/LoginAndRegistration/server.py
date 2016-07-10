@@ -19,7 +19,7 @@ mysql = MySQLConnector(app,'friendsdb')
 @app.route('/', methods=['GET','POST'])
 def index():
 	
-	return render_template('index.html',register='hide')
+	return render_template('index.html',login='show',register='hide')
 
 ############################################################
 #login
