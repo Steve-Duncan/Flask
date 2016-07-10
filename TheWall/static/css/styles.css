@@ -1,0 +1,191 @@
+/*CSS reset settings */
+*{
+	margin: 0;
+	padding: 0;
+	font-family: Tahoma, sans-serif;
+}
+.container{
+	width: 750px;
+	margin: 0 auto;
+	border: 1px solid black;
+}
+
+/*header section*/
+.header{
+	border-bottom: 1px solid black;
+	padding: 0 0 10px 10px;
+	background-color: silver;
+}
+h4{
+	text-align: center;
+}
+.header input{
+	border: 1px solid black;
+	font-size: 14px;	
+}
+ul, input{
+	display: inline;
+	vertical-align: center;
+}
+ul li{
+	display: inline-block;
+	vertical-align: bottom;
+	font-size: 50px;
+}
+ul, input{
+	display: inline;
+	vertical-align: center;
+}
+ul li{
+	display: inline-block;
+	vertical-align: bottom;
+	font-size: 50px;
+}
+#nav{
+	width: 350px;
+	margin: 0 0 25px 25px;
+}
+#home{
+	margin-top: 10px;
+}
+#search{
+	width: 100px;
+	margin-left: 40px;
+	background-image:url("http://i47.tinypic.com/r02vbq.png");
+	background-repeat: no-repeat;
+    background-position: left;
+}
+#searchIcon{
+	margin-left: 50px;
+}
+
+/*main section*/
+.main_welcome{
+	border-bottom: 1px solid black;
+	padding-left: 15px;
+
+}
+
+
+.main_welcome span{
+	display: inline-block;
+}
+.main_welcome span:nth-of-type(-n+2){
+	/*display: inline-block;*/
+	width: 40%;
+	
+}
+.main_welcome span:nth-of-type(2){
+	text-align: right;
+	padding-right: 50px;
+}
+.main_welcome span:last-child{
+	padding: 5px;
+	
+}
+span h4{
+	text-align: left;
+}
+.post_msg{
+	text-align: left;
+	margin-left: 75px;
+	margin-top:50px;
+}
+.message{
+	/*display: inline-block;
+	vertical-align: top;*/
+	padding: 5px;
+	text-align: left;
+	vertical-align: top;
+	width: 450px;
+	height: 75px;
+	/*padding: 25px 25px 0px 25px;*/
+	margin-left: 75px;
+	margin-top: 5px;
+	margin-bottom: 100px;
+	border: 1px solid black;
+}
+.show{
+	visibility: visible;
+}
+.hide{
+	visibility: none;
+}
+
+/*}
+form{
+	display: inline-block;
+	vertical-align: top;
+	width: 450px;
+	height: 75px;
+	padding: 25px 25px 0px 25px;
+	margin-left: 75px;
+	margin-top: 5px;
+	margin-bottom: 100px;
+	border: 1px solid black;
+}
+*/
+
+/*form span{
+	display: inline-block;
+
+}
+
+form p:nth-of-type(4){
+	margin-bottom: 10px;
+}
+
+h3{
+	text-decoration: underline;
+	margin-bottom: 15px;
+}
+label, input{
+	display: inline-block;
+	margin-bottom: 15px;
+
+}
+
+label, .aLeft{
+width: 180px;
+
+}
+
+select{
+	width: 165px;
+}
+textarea{
+	margin-top: 10px;
+}
+
+.aRight{
+	margin-left: 50px;
+}
+.aLeft,.aRight{
+	margin-bottom:5px;
+}
+#comment{
+	 width: 345px;
+	 height: 80px;
+	 padding-left: 25px;
+}
+
+button{
+	width: 75px;
+	margin-left: 270px;
+	box-shadow: 3px 3px 1px black;
+}*/
+
+
+/*footer section*/
+.footer{
+	height: 25px;
+	background-color: silver;
+	border-top: 1px solid black;
+}
+
+
+
+
+
+
+

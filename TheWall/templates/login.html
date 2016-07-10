@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dojo Survey</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+	<div class="container">
+		
+		<div class="header">		
+			<h4>Wall Assignment - Intermediate version</h4>
+			<ul>
+				<li>&#x21e6;</li>
+				<li>&#x21e8;</li>
+				<li>&#x2716;</li>
+				<li><img src="{{ url_for('static',filename='images/home.png') }}" alt="home icon"></li>
+			</ul>
+			<input type="text" id="nav" value="http://localhost/">
+			<input type="text" id="search">
+		</div>
+
+		
+
+
+		<div class="main">
+			<div class='main_welcome'>
+
+				<span><h4>CodingDojo Wall</h4></span>
+				<span>{{ greeting }}</span>
+				<span class='logoff'><a href="{{ url_for('login') }}">{{ log }}</a></span>
+			
+			</div>
+				<h4>Log in</h4>
+				<form action="/login" method='post' class='{{ login }}'>
+					<label for='email'>Email:</label><input type="text" name='email'> 
+					<label for='password'>Password:</label><input type="text" name = 'password'>
+					<input type="submit" class='submit' value='Log in'>
+				</form>
+
+		</div>
+
+
+		<div class="footer"></div>
+	</div>
+</body>
+</html>
+
+
+###################################################################################################
+<!-- <body>
+	<div class='container'>
+		<h1 class='{{ login }}'>Login page</h1>
+		<h2 class='{{ register }}'>Email not found - please register.</h2>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					<p>{{ message }}</p>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+		<form action="/login" method='post' class='{{ login }}'>
+			<label for='email'>Email:</label><input type="text" name='email'> 
+			<label for='password'>Password:</label><input type="text" name = 'password'>
+			<input type="submit" class='submit' value='Log in'>
+		</form>
+
+		<form action="/register" method='post' class='{{ register }}'>
+			<label for='first_name'>First name:</label><input type="text" name='first_name'>
+			<label for='last_name'>Last name:</label><input type="text" name='last_name'>
+			<label for='email'>Email:</label><input type="text" name='email'> 
+			<label for='password'>Password:</label><input type="text" name = 'password'>
+			<label for='confirm_password'>Confirm password:</label><input type="text" name = 'confirm_password'>
+			<input type="submit" class='submit' value='Register'>
+		</form>
+	</div>
+</body>
+</html> -->
+
