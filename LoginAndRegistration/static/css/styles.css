@@ -1,0 +1,58 @@
+/*CSS reset settings */
+*{
+	margin: 0;
+	padding: 0;
+	font-family: Tahoma, sans-serif;
+	/*border: 1px solid red;*/
+}
+
+.container{
+	width: 450px;
+	margin: 0 auto;
+	border: 1px solid black;
+	text-align: center;
+	/*the following centers the container vertically*/
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+
+}
+h1,h2{
+	margin-bottom: 15px;
+	text-align: center;
+}
+h2{
+	color: red;
+}
+form{
+	/*width: 350px;*/
+	padding: 5px;
+	padding-right: 100px;
+
+	/*border: 1px solid red;*/
+}
+
+input, label{
+	display: inline-block;
+	height: 20px;
+	width: 150px;
+	margin: 1px;
+}
+label{
+	text-align: right;
+}
+.submit{
+	margin-top: 15px;
+	margin-left: 75px;
+	width: 100px;
+}
+
+
+.show{
+	visibility: visible;
+}
+.hide{
+	display: none;
+}
