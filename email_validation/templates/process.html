@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Email Validation</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+	<div class="container">
+		
+		<div class="header">		
+			<h4>Email Validation</h4>
+			<ul>
+				<li>&#x21e6;</li>
+				<li>&#x21e8;</li>
+				<li>&#x2716;</li>
+				<li><img src="{{ url_for('static',filename='images/home.png') }}" alt="home icon"></li>
+			</ul>
+			<input type="text" id="nav" value="http://localhost/">
+			<input type="text" id="search">
+		</div>
+
+		<div class="main">
+				<h3 class='success {{visible}}'>The email address you entered ({{ email }}) is a VALID email address! Thank you!</h3>
+
+				<h3 class='address_title'>Email Addresses Entered:</h3>
+				
+
+				<div class='email_list'>
+					{% for address in email_list %}
+						<form action="/delete/{{ address['id'] }}" method='post'>
+							<input type='hidden' class='delete' name='delete' value='{{ address['id'] }}'>
+							<input type="hidden" value='{{ address['email'] }}'>
+							<span class='address'>{{address['email']}}</span><span class='date'>{{address['date']}}</span><input type="submit" value='Delete'>
+						</form>
+					{% endfor %}
+				</div>
+				<form action="/" class='add'>
+					<input type='submit' value='Add email?'>
+				</form>					
+		</div>
+			
+		<div class="footer"></div>
+	</div>
+</body>
+</html>
+
+
+
