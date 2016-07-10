@@ -1,0 +1,52 @@
+/*CSS reset settings */
+*{
+	margin: 0;
+	padding: 0;
+	font-family: Tahoma, sans-serif;
+}
+
+form{
+	display: inline-block;
+	margin: 0 auto;
+	width: 75px;
+/*	border: 1px solid blue;*/
+}
+.form_edit{
+	width: 250px;
+}
+form span{
+	display: inline-block;
+	margin: 0 auto;
+	width: 100px;
+	height: 20px;
+}
+form input{
+	display: inline-block;
+
+	width: 100px;
+}
+p span{
+	text-decoration: underline;
+	margin-bottom: 10px;
+}
+.btn_wrap{
+	display: inline-block;
+	width: 50px;
+/*	background-color: green;*/
+}
+.btn_create{
+	margin-top: 25px;
+}
+/*.user{
+	border: 1px solid green;
+	width: 500px;
+}*/
+.submit_edit{
+	width: 80px;
+}
+.listing{
+	display: inline-block;
+	width: 200px;
+
+/*	border: 1px solid red;*/
+}

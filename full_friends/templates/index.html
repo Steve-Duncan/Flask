@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Full Friends</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+	<p><span class='listing'>User Name</span><span class='listing'>Email Address</span><span class='listing'>Created</span></p>
+	{% for friend in friends %}
+		
+		<span class='listing'>{{ friend['name'] }}</span><span class='listing'>{{ friend['email']}}</span><span class='listing'>{{ friend['created']}}</span>
+		<form action="/friends/{{ friend['id']}}/edit" method='get'>
+			<input type="submit" value='Edit' class='btn_wrap'>
+		</form>
+		<form action="/friends/{{ friend['id'] }}/delete" method='post'>
+			<input type="submit" value='Delete' class='btn_wrap'>
+		</form>
+		
+		<br>
+		
+	{% endfor %}
+	<form action="/friends" method='post'>
+		<input type="submit" name='submit' value='Add User?' class='btn_create'>
+	</form>
+</body>
+</html>
