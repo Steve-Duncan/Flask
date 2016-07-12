@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+
 	<div class="container">
 		
 		<div class="header">		
@@ -48,6 +49,7 @@
 				{% for message in all_messages %}
 					<p class='msg_user'>{{ message['name'] }} - {{ message['create_date'] }}</p>
 					<p class='msg_msg'>{{ message['message'] }}</p>
+
 				{% endfor %}
 				<p>{{ new_msg }}</p>
 			</div>

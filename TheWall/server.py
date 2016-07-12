@@ -15,12 +15,6 @@ bcrypt=Bcrypt(app)
 mysql = MySQLConnector(app,'wall')
 
 ############################################################
-#this function gets all messages from database
-def get_messages():
-	query="SELECT CONCAT(users.first_name,' ',users.last_name) AS 'name', DATE_FORMAT(messages.create_time, '%M %D, %Y') AS 'create_date', message \
-	FROM MESSAGES JOIN users ON messages.user_id=users.id ORDER BY messages.create_time DESC;"
-	return mysql.query_db(query)
-############################################################
 #index
 @app.route('/')
 def index():
@@ -57,9 +51,11 @@ def showform(action):
 		#show register form and hide login form
 		show_login='hide'
 		show_register='show'
-
-	return render_template('index.html',login=login,register=register,show_login=show_login,show_register=show_register,show_msg_input=show_msg_input)
-
+	if session.get('greeting'):
+		greeting=session['greeting']
+		session.pop('greeting')
+	return render_template('index.html',**locals())
+	#return render_template('index.html',login=login,register=register,show_login=show_login,show_register=show_register,show_msg_input=show_msg_input)
 
 ############################################################
 #log off
@@ -87,38 +83,19 @@ def login():
 	if users:
 		for user in users:
 			#check the password to compare with hashed value in database
-			if bcrypt.check_password_hash(users[0]['password'],password):
+			if bcrypt.check_password_hash(users[0]['password'],password):				
 				#login was successful
-				#sett greeting to user's name
-				greeting='Welcome, ' + users[0]['first_name'] + '!'
-				#hide the login and register forms
-				show_login='hide'
-				show_register='hide'
-				#change login anchor to log out
-				login='log out'
-				#set register anchor to blank
-				register=''
-				#set session variables for user name, id, and greeting 
-				session['user']=users[0]['name']
 				session['user_id']=users[0]['id']
-				session['greeting']=greeting
-				#enable the message input field and button
-				enabled = 'enabled'
-				#unhide the message input field
-				show_msg_input='show'
-				#unhide div that displays messages
-				show_messages='show'
-				#call function to get all messages
-				all_messages=get_messages();
-				
-				return render_template('index.html',show_login=show_login,show_register=show_register,show_messages=show_messages,all_messages=all_messages,greeting=greeting,login=login,register=register,enabled=enabled,show_msg_input=show_msg_input)
+				session['first_name']=users[0]['first_name']
+				session['greeting']='Welcome back, '
 
+				return redirect('/wall')
 			else:
 				flash( "Password incorrect. Please try again." ) 
-				
 	else:
 		#email not found in database, need to register
 		##need to add error message to form
+		session['greeting']='Email not found. Please register.'
 		##need to add link to return to index if not registering
 		return redirect('/showform/register')
 	return redirect('/')
@@ -180,27 +157,13 @@ def register():
 		}
 		#run the query to return the record
 		users = mysql.query_db(query,data)
-		#set user greeting
-		greeting='Welcome, ' + users[0]['first_name'] + '!'
-		#set session variables for user name, id, and greeting
-		session['user']=users[0]['name']
-		session['user_id']=users[0]['id']
-		session['greeting']=greeting
-		#hide login and register forms
-		show_login='hide'
-		show_register='hide'
-		#change login anchor to log out
-		login='log out'
-		#enable the message input field and button
-		enabled = 'enabled'
-		#unhide div that displays messages
-		show_messages='show'
-		#unhide the message input field
-		show_msg_input='show'
-		#call function to get all messages
-		all_messages=get_messages();
 
-		return render_template('index.html', show_messages=show_messages,all_messages=all_messages,greeting=greeting, login=login, register=register, enabled=enabled, show_login=show_login, show_register=show_register, show_msg_input=show_msg_input)
+		session['user_id']=users[0]['id']
+		session['first_name']=users[0]['first_name']
+		session['greeting']='Welcome, '
+
+		return redirect('/wall')
+
 ############################################################
 @app.route('/post_msg',methods=['POST'])
 def post_msg():
@@ -217,28 +180,36 @@ def post_msg():
 	}
 	#run the query to add the record
 	mysql.query_db(query,data)
+	return redirect('/wall')
+	
+############################################################
+#show the wall
+@app.route('/wall',methods=['GET'])
+def wall():
+	#get all messages
+	query="SELECT CONCAT(users.first_name,' ',users.last_name) AS 'name', DATE_FORMAT(messages.create_time, '%M %D, %Y') AS 'create_date', message \
+	FROM MESSAGES JOIN users ON messages.user_id=users.id ORDER BY messages.create_time DESC;"
 
-	#get user name from session
-	user=session['user']
-	#set user greeting
-	greeting=session['greeting']
+	all_messages=mysql.query_db(query)
 
-	#hide login and register forms
+	#set greeting to user's name
+	greeting=session['greeting'] + session['first_name'] + '!'
+	#hide the login and register forms
 	show_login='hide'
 	show_register='hide'
-	#set login anchor to log out
+	#change login anchor to log out
 	login='log out'
-	#enable message input field and button
+	#set register anchor to blank
+	register=''
+
+	#enable the message input field and button
 	enabled = 'enabled'
-	#unhide message input field
+	#unhide the message input field
 	show_msg_input='show'
-	#unhide div that contains messages
+	#unhide div that displays messages
 	show_messages='show'
-	#call function to get all messages
-	all_messages=get_messages();
 
-	return render_template('index.html', show_messages=show_messages,all_messages=all_messages,greeting=greeting, login=login, register=register, enabled=enabled, show_login=show_login, show_register=show_register, show_msg_input=show_msg_input)
-
+	return render_template('index.html', **locals())
 
 ############################################################
 app.run(debug=True)
