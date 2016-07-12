@@ -3,11 +3,18 @@
 	margin: 0;
 	padding: 0;
 	font-family: Tahoma, sans-serif;
+	/*border: 1px solid red;*/
 }
 .container{
 	width: 750px;
 	margin: 0 auto;
 	border: 1px solid black;
+
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
 }
 
 /*header section*/
@@ -16,7 +23,7 @@
 	padding: 0 0 10px 10px;
 	background-color: silver;
 }
-h4{
+.header > h4{
 	text-align: center;
 }
 .header input{
@@ -58,122 +65,90 @@ ul li{
 #searchIcon{
 	margin-left: 50px;
 }
-
+/*#############################################################*/
 /*main section*/
-.main_welcome{
+.welcome{
 	border-bottom: 1px solid black;
 	padding-left: 15px;
-
 }
-
-
-.main_welcome span{
+.welcome span{
 	display: inline-block;
+	padding: 5px;
 }
-.main_welcome span:nth-of-type(-n+2){
-	/*display: inline-block;*/
-	width: 40%;
-	
+.welcome span:first-child{
+	padding: 5px;
+	font-size: large;
 }
-.main_welcome span:nth-of-type(2){
+.welcome span:nth-of-type(-n+2){
+	width: 35%;	
+}
+.welcome span:nth-of-type(2){
 	text-align: right;
 	padding-right: 50px;
 }
-.main_welcome span:last-child{
-	padding: 5px;
-	
+.welcome span:last-child{
+	padding: 5px;	
 }
-span h4{
+.post_msg > h4{
 	text-align: left;
-}
-.post_msg{
-	text-align: left;
-	margin-left: 75px;
+	margin-left: 150px;
 	margin-top:50px;
 }
-.message{
-	/*display: inline-block;
-	vertical-align: top;*/
+.new_msg{
 	padding: 5px;
 	text-align: left;
 	vertical-align: top;
 	width: 450px;
-	height: 75px;
-	/*padding: 25px 25px 0px 25px;*/
-	margin-left: 75px;
+	height: 50px;
 	margin-top: 5px;
-	margin-bottom: 100px;
+	margin-bottom: 15px;
 	border: 1px solid black;
+}
+form{
+	width: 350px;
+	margin: 10px 0 0px 150px;
+	padding: 5px;
+	padding-right: 100px;
+}
+.messages{
+	margin-left: 150px;
+	overflow: auto;
+	max-height: 400px;
+}
+.msg_user{
+	margin-bottom: 5px;
+}
+.msg_msg{
+	margin-bottom: 25px;
+	margin-left: 25px;
+}
+#login_btn{
+	margin-left: 152px;
+	width: 155px;
+}
+.login > form > label{
+	text-align: right;
+}
+input, label{
+	display: inline-block;
+	height: 20px;
+	width: 150px;
+	margin: 1px;
+	}
+/*position the Post a message button*/
+#post_btn{
+	margin-left: 360px;
+}
+#register_btn{
+	margin-left: 152px;
+	width: 155px;
 }
 .show{
-	visibility: visible;
+	display: visible;
 }
 .hide{
-	visibility: none;
+	display: none;
 }
-
-/*}
-form{
-	display: inline-block;
-	vertical-align: top;
-	width: 450px;
-	height: 75px;
-	padding: 25px 25px 0px 25px;
-	margin-left: 75px;
-	margin-top: 5px;
-	margin-bottom: 100px;
-	border: 1px solid black;
-}
-*/
-
-/*form span{
-	display: inline-block;
-
-}
-
-form p:nth-of-type(4){
-	margin-bottom: 10px;
-}
-
-h3{
-	text-decoration: underline;
-	margin-bottom: 15px;
-}
-label, input{
-	display: inline-block;
-	margin-bottom: 15px;
-
-}
-
-label, .aLeft{
-width: 180px;
-
-}
-
-select{
-	width: 165px;
-}
-textarea{
-	margin-top: 10px;
-}
-
-.aRight{
-	margin-left: 50px;
-}
-.aLeft,.aRight{
-	margin-bottom:5px;
-}
-#comment{
-	 width: 345px;
-	 height: 80px;
-	 padding-left: 25px;
-}
-
-button{
-	width: 75px;
-	margin-left: 270px;
-	box-shadow: 3px 3px 1px black;
-}*/
 
 
 /*footer section*/
@@ -182,10 +157,4 @@ button{
 	background-color: silver;
 	border-top: 1px solid black;
 }
-
-
-
-
-
-
 
